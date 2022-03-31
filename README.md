@@ -17,7 +17,7 @@ The course is taught primarily using R, because it is free and open source. Code
 
 **Stata**. Requires a paid license. Examples herein are provided using [Stata](https://www.stata.com/) version 15. 
 
-**SPSS**. Requires a paid license. Current examples are from previous versions of this course, as I currently don't have a license.
+**SPSS**. Requires a paid license. 
 
 #### Data
 
