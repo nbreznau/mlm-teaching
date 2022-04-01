@@ -7,12 +7,12 @@ pacman::p_load("tidyverse",
                "ragg",
                "viridis")
 
-df <- as.data.frame(read_csv(df, here::here("data", "df.csv")))
+df <- as.data.frame(read_csv(here::here("data", "df.csv")))
 
 # create a subset of 5 countries
 
 df_sub <- df %>%
-  subset(iso3c %in% c("DEU", "KOR", "IDN", "MEX") & year > 2016)
+  subset(iso3c %in% c("DEU", "KOR", "IDN", "MEX") & year < 2016)
 
 # regressions for plots
 reg <- lm(A170 ~ X047_WVS + factor(iso3c), data = df_sub)

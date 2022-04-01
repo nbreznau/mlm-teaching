@@ -25,9 +25,9 @@ The following two sources provide the data for all examples in this study
 
 **World Values Survey (WVS)**
 
-Individual level data for many countries since 1981. Source file [WVS_TimeSeries_1981_2020_ascii_v2_0.csv](https://doi.org/10.14281/18241.15)
+Individual level data for many countries since 1981. Source file [WVS_TimeSeries_1981_2022_Csv_v3_0.csv](https://doi.org/10.14281/18241.17)
 
-Haerpfer, C., Inglehart, R., Moreno, A., Welzel, C., Kizilova, K., Diez-Medrano J., M. Lagos, P. Norris, E. Ponarin & B. Puranen et al. (eds.). 2021. *World Values Survey Time-Series (1981-2020) Cross-National Data-Set*. Madrid, Spain  &  Vienna,  Austria:  JD  Systems  Institute  &  WVSA Secretariat. Data File Version 2.0.0
+Inglehart, R., C. Haerpfer, A. Moreno, C. Welzel, K. Kizilova, J. Diez-Medrano, M. Lagos, P. Norris, E. Ponarin & B. Puranen (eds.). 2022. World Values Survey: All Rounds - Country-Pooled Datafile. Madrid, Spain & Vienna, Austria: JD Systems Institute & WVSA Secretariat. Dataset Version 3.0.0. doi:10.14281/18241.17
 
 ##### WVS Variables Used
 
