@@ -23,6 +23,9 @@ m1sum <- m1sum %>%
 m1sum[3,1] <- "ICC"
 m1sum[3,2] <- m1sum$vcov[1]/(m1sum$vcov[1]+m1sum$vcov[2])
 
+# count cases
+m1sum$N <- c(length(unique(m1@frame[["iso3c"]])),length(m1@frame[["A170"]]), "")
+
 m1sum$vcov <- round(m1sum$vcov, 3)
 
-write.csv(m1sum, here::here("exercises","exercise1.1.csv"), row.names = F)
+write.csv(m1sum, here::here("exercises","exercise1.csv"), row.names = F)
