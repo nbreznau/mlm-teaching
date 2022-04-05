@@ -3,7 +3,7 @@
 pacman::p_load("tidyverse",
                "lme4", # major multilevel package
                "sjPlot", # for tabulating and visualizing regression results
-               "insight") # for exatracting variances
+               "insight") # for extracting variances
 
 
 
@@ -110,7 +110,7 @@ tab1_out[nrow(tab1_out)+1, 1] <- "* p<0.05   ** p<0.01   *** p<0.001"
 
 # remove unnecessary rows
 tab1_out <- tab1_out[-96, ]
-tab1_out <- tab1_out[2:nrow(tab1_out),]
+tab1_out <- tab1_out[2:nrow(tab1_out), ]
 
 tab1_out[is.na(tab1_out)] <- ""
 
