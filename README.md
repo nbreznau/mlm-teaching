@@ -3,8 +3,11 @@
 
 ### Contents
 
-#### Exercises
+#### Reading and Exercises
 
+I have put together a handbook for the course, please have a read of the first two chapters. Although, just a warning that it is unfinished and gets a bit messy after Exercise 4.
+
+Breznau, Nate. 2022. "Introduction to Multilevel Modeling: Applications in R, Stata and SPSS". Open Science, Creative Commons. https://osf.io/whnpy/
 
 
 ### Requirements
@@ -17,11 +20,11 @@ The course is taught primarily using R, because it is free and open source. Code
 
 **Stata**. Requires a paid license. Examples herein are provided using [Stata](https://www.stata.com/) version 15. 
 
-**SPSS**. Requires a paid license. 
+**SPSS**. Requires a paid license. Examples using SPSS 28.
 
 #### Data
 
-The following two sources provide the data for all examples in this study
+The following two sources provide the data for all examples in this study. Everything can be reproduced using the file [df.csv](../data/df.csv). At a minimum students should have these open and try out some of the exercises using them. 
 
 **World Values Survey (WVS)**
 
