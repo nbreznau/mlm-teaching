@@ -55,6 +55,6 @@ Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan T
 
 #### Preparation
 
-Both files 'WVS_TimeSeries_1981_2020_ascii_v2_0.csv' and 'V-Dem-CY-Full+Others-v12.csv' are too large to synchronize with GitHub, therefore they need to be downloaded and placed into the folder ../data/source. Then the R code [extract.R](../data/source/extract.R) produces the reduced files 'wvs.csv' and 'vdem.csv'.
+Both files 'WVS_TimeSeries_1981_2020_ascii_v2_0.csv' and 'V-Dem-CY-Full+Others-v12.csv' are too large to synchronize with GitHub, therefore they need to be downloaded and placed into the folder ../data/source. Then the R code [extract.R](../main/data/source/extract.R) produces the reduced files 'wvs.csv' and 'vdem.csv'.
 
 These two files are merged with the code [merge_wvs_vdem.R](../main/data/merge_wvs_vdem.R), and saved as the file [df.csv](../main/data/df.csv)
