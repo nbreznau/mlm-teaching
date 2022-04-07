@@ -24,7 +24,7 @@ The course is taught primarily using R, because it is free and open source. Code
 
 #### Data
 
-The following two sources provide the data for all examples in this study. Everything can be reproduced using the file [df.csv](../main/data/df.csv). At a minimum students should have these open and try out some of the exercises using them. 
+The following two sources provide the data for all examples in this study. Everything can be reproduced using the file [df.csv](https://osf.io/b8t6a/). At a minimum students should have these open and try out some of the exercises using them. 
 
 **World Values Survey (WVS)**
 
@@ -57,4 +57,4 @@ Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan T
 
 Both files 'WVS_TimeSeries_1981_2020_ascii_v2_0.csv' and 'V-Dem-CY-Full+Others-v12.csv' are too large to synchronize with GitHub, therefore they need to be downloaded and placed into the folder ../data/source. Then the R code [extract.R](../main/data/source/extract.R) produces the reduced files 'wvs.csv' and 'vdem.csv'.
 
-These two files are merged with the code [merge_wvs_vdem.R](../main/data/merge_wvs_vdem.R), and saved as the file [df.csv](../main/data/df.csv)
+These two files are merged with the code [merge_wvs_vdem.R](../main/data/merge_wvs_vdem.R), and saved as the file [df.csv](https://osf.io/b8t6a/)
