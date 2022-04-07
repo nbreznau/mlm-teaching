@@ -116,3 +116,5 @@ tab1_out[is.na(tab1_out)] <- ""
 
 # Save table
 write.csv(tab1_out, here::here("results", "Tbl_Compare_Regressions.csv"), row.names = F)
+
+

@@ -9,7 +9,8 @@ pacman::p_load("tidyverse",
                "ragg",
                "lme4", # major multilevel package
                "sjPlot", # for tabulating and visualizing regression results
-               "insight") # for extracting variances
+               "insight", # for extracting variances
+               "ggrepel") # for placing labels in plot without overlap
 
 # Load data, and subset to waves 1- 5, because these are the only ones for which we have real income data
 # Also remove any missing data & add wave variable back in
@@ -24,6 +25,15 @@ df <- as.data.frame(read_csv(here::here("data", "df.csv"))) %>%
            year > 1998 & year < 2005 ~ "4",
            year > 2004 & year < 2010 ~ "5",
          ))
+
+# create within-life sat and income
+df <- df %>%
+  group_by(iso3c) %>%
+  mutate(A170_b = mean(A170, na.rm = T),
+         inc_real_b = mean(inc_real, na.rm = T),
+         A170_w = A170 - A170_b,
+         inc_real_w = inc_real - inc_real_b) %>%
+  ungroup()
 
 # Again run m2 and m4 from exercise 2
 
@@ -136,3 +146,51 @@ ggplot() +
   ylim(0,10) +
   theme(legend.position = "none")
 dev.off()
+
+# Compare r-squared across countries
+## Calculate predicted values
+### = l1 intercept + l2 grand mean intercept + l2 country-specific intercept + l2 grand mean slope + l2 country-specific slope
+
+## but predit works after lme4, defaults are to use all information
+df$A170_hat_m3 <- predict(m3, newdata = df)
+
+## Now calculate country-specific r2
+
+m3_results <- m3_re1
+m3_results$iso3c <- ifelse(m3_results$iso3c == "Grand Mean", NA, m3_results$iso3c)
+
+for (c in unique(m3_results$iso3c)) {
+  m3_results$r2[m3_results$iso3c == c] = (cor(df$A170[df$iso3c == c], df$A170_hat_m3[df$iso3c == c], use = "pairwise.complete.obs")^2)
+}
+
+
+
+
+# add grandmean
+m3_results <- m3_results %>%
+  mutate(iso3c = ifelse(is.na(iso3c), "Grand Mean", iso3c),
+         r2 = ifelse(iso3c == "Grand Mean", (cor(df$A170, df$A170_hat_m3, use = "pairwise.complete.obs"))^2, r2))
+
+## Plot slope / r-squared
+ggplot(m3_results) +
+  geom_point(aes(y = r2, x = inc_slope)) +
+  geom_label_repel(aes(y = r2, x = inc_slope, label = iso3c)) +
+  theme_classic() +
+  # trim outliers
+  xlim(-0.1, 1) +
+  labs(y = "Within-country R-square", x = "Country-Specific Slope")
+
+# the 'grandmean within correlation' would be within-variance only
+m3_results2 <- as.data.frame(m3_results)
+
+m3_results2[nrow(m3_results2) +1, ] <- c(m3_results[nrow(m3_results),1], m3_results[nrow(m3_results),2], "Within Grand Mean", (cor(df$A170_w, df$inc_real_w, use = "pairwise.complete.obs"))^2)
+
+## Plot slope / r-squared
+ggplot(m3_results2) +
+  geom_point(aes(y = as.numeric(r2), x = as.numeric(inc_slope))) +
+  geom_label_repel(aes(y = as.numeric(r2), x = as.numeric(inc_slope), label = iso3c)) +
+  geom_label(data = subset(m3_results2, iso3c == "Within Grand Mean"), aes(y = as.numeric(r2), x = as.numeric(inc_slope), label = iso3c)) +
+  theme_classic() +
+  # trim outliers
+  xlim(-0.1, 1) +
+  labs(y = "Within-country R-square", x = "Country-Specific Slope")
